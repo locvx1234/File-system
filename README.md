@@ -4,16 +4,16 @@
 File system là hệ thống tổ chức lưu trữ các tập tin và siêu dữ liệu trên ổ đĩa.
 
 ## 2. Journaling 
-Cơ chế ghi lại nhật ký khi ghi dữ liệu, giúp hệ điều hành phát hiện được lỗi trong quá trình ghi dữ liệu khi gặp sự cố.
+Cơ chế Journaling cho phép ghi lại nhật ký khi ghi dữ liệu, giúp hệ điều hành phát hiện được lỗi trong quá trình ghi dữ liệu khi gặp sự cố.
 
-<img scr="http://img.quantrimang.com.vn/photos/image/012012/19/linuxfilesystem--02.jpg">
+<img src="http://i.imgur.com/PfWI3O9.jpg">
 
 Đầu tiên, file được ghi vào Journal, sau đó Journal ghi file đó vào ổ cứng.
 Nếu quá trình ghi file thành công thì dữ liệu ở journal bị xóa bỏ và hoàn tất.
 Còn nếu xảy ra lỗi, file system kiểm tra và ghi lại lỗi ở journal.
 
-*Ưu điểm : * Phát hiện lỗi trong khi gặp sự cố.
-*Nhược điểm : * Giảm hiệu suất hệ điều hành.
+**Ưu điểm : ** Phát hiện lỗi trong khi gặp sự cố.
+**Nhược điểm : ** Giảm hiệu suất hệ điều hành.
 
 ## 3. Phân loại
 Linux hỗ trợ nhiều loại file system 
@@ -53,10 +53,12 @@ Linux cũng hỗ trợ Microsoft NTFS, vfat và một số file system khác.
 
 ## 5. Các lệnh làm việc với file
 ### du
-Lệnh `du` để xem dung lượng file hoặc thư mục 
+Lệnh `du` để xem dung lượng file hoặc thư mục.
 
-Ví dụ liệt kê kích thước các file trong thư mục /var
+Ví dụ liệt kê kích thước các file trong thư mục `/var` :
+	
 	# du -ah /var 
+	
 Các tùy chọn:
 - -a (all): tất cả các file
 - -h : hiển thị đơn vị kích thước
@@ -64,10 +66,10 @@ Các tùy chọn:
 
 Để sắp xếp các file theo thứ tự kích thước giảm dần
 
-<img src="http://i.imgur.com/I9dTByN.png">
-
 	# du /var -a | sort -nr | head -10
 	
+<img src="http://i.imgur.com/I9dTByN.png">
+
 ### df 
 Lệnh `df` dùng để xem tình trạng các phân vùng và các thiết bị được mount
 
