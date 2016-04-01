@@ -13,6 +13,7 @@ Nếu quá trình ghi file thành công thì dữ liệu ở journal bị xóa b
 Còn nếu xảy ra lỗi, file system kiểm tra và ghi lại lỗi ở journal.
 
 **Ưu điểm : ** Phát hiện lỗi trong khi gặp sự cố.
+
 **Nhược điểm : ** Giảm hiệu suất hệ điều hành.
 
 ## 3. Phân loại
@@ -28,6 +29,7 @@ Linux hỗ trợ nhiều loại file system
 | reiserFS | 8 TiB | 16 TiB | Có | Phù hợp với các file nhỏ, database, server email | 
 
 Bên cạnh đó còn rất nhiều loại file system khác : isofs (iso9660), sysfs, procfs, nfs, ...
+
 Linux cũng hỗ trợ Microsoft NTFS, vfat và một số file system khác. 
 
 ## 4. Cấu trúc phân cấp file system 
