@@ -84,9 +84,52 @@ Các tùy chọn:
 
 <img src="http://i.imgur.com/CDQvr1d.png">
 
+## 6. fstab 
+
+fstab (file system table) tại đường dẫn `/etc/fstab` là một file text lưu thông tin về các thiết bị, mount point và các thiết lập của nó.
+
+Khi khởi động, hệ thống sẽ đọc file này để tự động mount các thiết bị được chỉ ra trong file. 
+
+Ví dụ về file `fstab` :
+
+```
+#
+# /etc/fstab
+# Created by anaconda on Fri Nov 17 17:06:18 2017
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/centos-root /                       xfs     defaults        0 0
+UUID=6a73e21d-0e4e-4716-bbd4-4b1bcd07f125 /boot                   xfs     defaults        0 0
+/dev/mapper/centos-swap swap                    swap    defaults        0 0
+
+```
+
+Ý nghĩa các trường : 
+
+Cột 1 : UUID hoặc đường dẫn thiết bị. Ví dụ : `/dev/mapper/centos-root` hoặc `UUID=6a73e21d-0e4e-4716-bbd4-4b1bcd07f125`
+ 
+Cột 2 : mount point. Ví dụ `/` , `/boot`
+
+Cột 3 : định dạng file system. Ví dụ `ext2`, `ext3`, `xfs` 
+
+Cột 4 : các tùy chọn, nếu có nhiều thì được phân cách bởi dấu phẩy 
+
+- *auto/noauto* : phân vùng có được tự động mount thiết bị khi máy tính khởi động hay không 
+- *exec/noexec* : phân vùng có thể thực thi các chương trình nhị phân trên đó hay không 
+- *ro/rw* : `ro` là read-only, `rw` là read-write. Nếu bạn là user thường, bạn cần đặt `rw` nếu muốn ghi dữ liệu trên phân vùng đó 
+- *sync/async* : các thao tác nhập xuất được thực hiện đồng bộ / không đồng bộ 
+- *user/nouser* : người dùng được quyền mount và unmount. `user` bao hàm cả `noexec` nên nếu bạn muốn thực thi file nhị phân, cần phải có thêm `exec` 
+- *default* : bao gồm `rw`, `suid`, `dev`, `exec`, `auto`, `nouser`, async`
+
+Cột 5 : thiết lập backup khi hệ thống down. 1 là true, 0 là false 
+
+Cột 6 : thiết lập kiểm tra lỗi bằng fsck. 1 là true, 0 là false 
 
 ## Tham khảo 
 ---
 - http://quantrimang.com/tim-hieu-khai-niem-co-ban-ve-he-thong-file-trong-linux-84900
 - https://help.ubuntu.com/community/LinuxFilesystemsExplained
 - https://wiki.archlinux.org/index.php/file_systems
+- https://www.howtogeek.com/howto/38125/htg-explains-what-is-the-linux-fstab-and-how-does-it-work/
